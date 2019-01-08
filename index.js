@@ -5,7 +5,7 @@ const path = require("path");
 
 let bot = new Discord.Client();
 
-const token = JSON.parse(fs.readFileSync(path.join(__dirname,"./data/token.json"))).token;
+const token = process.env.BOT_TOKEN;
 
 
 bot.on('ready',()=>{
