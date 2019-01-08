@@ -3,8 +3,7 @@ const random = require('random');
 
 let bot = new Discord.Client();
 
-//const token = process.env.BOT_TOKEN;
-const token = "NTMwMDMxODEyODE5NTUwMjA4.DxZdBg.0W9J7lTsUkD5o-P6BJtyFoSeHzg";
+const token = process.env.BOT_TOKEN;
 
 bot.on('ready', () => {
   console.log("Alright, alright, alright")
