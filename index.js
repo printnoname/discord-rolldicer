@@ -27,36 +27,40 @@
 const http = require('http')
 const https = require('https')
 const port = process.env.PORT || 5000
+const querystring = require('querystring');
 
 
 const requestHandler = (request, response) => {
 
+
+  var id = "5d6cdaa147c4bf29766fe730"
+
+  var postData = querystring.stringify({
+    "profile_ids" : {id},
+    "now": true,
+    "media" : {"title":"test",'description':"test_description"}
+  });
+
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
-    path: encodeURI('/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN),
-    method: 'GET'
+    path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': postData.length
+    }
   }
 
   const req = https.request(options, res => {
     console.log(`statusCode: ${res.statusCode}`)
-    var output = "";
-
-    res.on('data', (chunk) => {
-      output += chunk;
-    });
-
-    res.on('end', () => {
-      let result = JSON.parse(output);
-      response.end(JSON.stringify(result));
-    });
-
   })
   
   req.on('error', error => {
     console.error(error)
-  })
-  
+  });
+
+   req.write(postData);
    req.end();
 }
 
