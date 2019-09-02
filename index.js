@@ -46,7 +46,6 @@ const requestHandler = (request, response) => {
     port: 443,
     path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
     method: 'POST',
-    body:postData,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': postData.length
@@ -58,12 +57,14 @@ const requestHandler = (request, response) => {
     //console.log('headers:', res.headers);
   })
 
-  console.log(req);
+  
 
   req.on('error', error => {
     console.error(error)
   });
 
+  req.write(postData);
+   console.log(req);
    req.end();
 }
 
