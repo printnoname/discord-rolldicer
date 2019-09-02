@@ -35,10 +35,17 @@ const requestHandler = (request, response) => {
 
   var id = "5d6cdaa147c4bf29766fe730"
 
+  var media = [];
+  media["title"] = "test";
+  media["description"] = "test_description";
+
+  var profile_ids = [];
+  profile_ids[0] = id;
+
   var postData = querystring.stringify({
-    "profile_ids" : [id],
+    "profile_ids" : profile_ids,
     "now": true,
-    "media" : {"title":"test",'description':"test_description"}
+    "media" : media
   });
 
   const options = {
