@@ -39,6 +39,8 @@ const requestHandler = (request, response) => {
   media["title"] = "My first tweet";
   media["description"] = "What about this one";
   media["photo"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048";
+  media["picture"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048";
+  media["link"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048"
   var profile_ids = [];
   profile_ids[0] = id;
 
@@ -69,8 +71,8 @@ const requestHandler = (request, response) => {
     });
 
     res.on('end', function () {
-      request.end();
       console.log(result);
+      request.end();
     });
     res.on('error', function (err) {
       request.end();
