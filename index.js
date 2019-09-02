@@ -42,7 +42,7 @@ const requestHandler = (request, response) => {
   media["picture"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048";
   media["link"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048"
   var profile_ids = [];
-  profile_ids[0] = id;
+  profile_ids[0] = ["5d6cdaa147c4bf29766fe730","5d6d1ec1addcc377765ed4d6","5d6d2225ac8f995ca4337aa5"];
 
   var postData = querystring.stringify({
     "profile_ids" : profile_ids,
@@ -51,24 +51,24 @@ const requestHandler = (request, response) => {
     "text": "posting stuff 2"
   });
 
-  // const options = {
-  //   hostname: 'api.bufferapp.com',
-  //   port: 443,
-  //   path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //     'Content-Length': postData.length
-  //   }
-  // }
-
-
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
-    path: encodeURI('/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN),
-    method: 'GET'
+    path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': postData.length
+    }
   }
+
+
+  // const options = {
+  //   hostname: 'api.bufferapp.com',
+  //   port: 443,
+  //   path: encodeURI('/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN),
+  //   method: 'GET'
+  // }
 
   const req = https.request(options, res => {
 
@@ -94,7 +94,7 @@ const requestHandler = (request, response) => {
     request.end();
   });
 
-  //req.write(postData);
+  req.write(postData);
   req.end();
 }
 
