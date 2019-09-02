@@ -40,7 +40,7 @@ const requestHandler = (request, response) => {
 
   const req = https.request(options, res => {
     console.log(`statusCode: ${res.statusCode}`)
-  
+    var output = "";
 
     res.on('data', (chunk) => {
       output += chunk;
