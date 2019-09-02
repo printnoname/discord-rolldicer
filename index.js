@@ -57,11 +57,11 @@ const requestHandler = (request, response) => {
     "profile_ids" : profile_ids,
     "now": true,
     //"media" : media,
-    "text": "posting stuff 20"
+    "text": "posting stuff 21"
   });
 
   console.log(postData);
-  
+
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
