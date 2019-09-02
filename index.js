@@ -51,15 +51,23 @@ const requestHandler = (request, response) => {
     "text": "posting stuff 2"
   });
 
+  // const options = {
+  //   hostname: 'api.bufferapp.com',
+  //   port: 443,
+  //   path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/x-www-form-urlencoded',
+  //     'Content-Length': postData.length
+  //   }
+  // }
+
+
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
-    path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': postData.length
-    }
+    path: encodeURI('/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN),
+    method: 'GET'
   }
 
   const req = https.request(options, res => {
@@ -85,7 +93,7 @@ const requestHandler = (request, response) => {
     request.end();
   });
 
-  req.write(postData);
+  //req.write(postData);
   req.end();
 }
 
