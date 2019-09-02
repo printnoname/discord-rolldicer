@@ -61,6 +61,12 @@ const requestHandler = (request, response) => {
   // });
 
   var postData = "profile_ids[]=5d6cdaa147c4bf29766fe730&profile_ids[]=5d6d1ec1addcc377765ed4d6&profile_ids[]=5d6d2225ac8f995ca4337aa5&text=hmmmmmm&now=true";
+  postData+="&text=" + encodeURI("text main");
+  postData+="&media[text]=" + encodeURI("media text");
+  postData+="&media[photo]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+  postData+="&media[picture]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480"); 
+  postData+="&media[link]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+  postData+="&media[description]=" + encodeURI("media description");
 
   console.log(postData);
 
