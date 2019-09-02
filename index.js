@@ -42,7 +42,7 @@ const requestHandler = (request, response) => {
   media["picture"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048";
   media["link"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048"
   var profile_ids = [];
-  profile_ids[0] = ["5d6cdaa147c4bf29766fe730","5d6d1ec1addcc377765ed4d6","5d6d2225ac8f995ca4337aa5"];
+  profile_ids = ["5d6cdaa147c4bf29766fe730","5d6d1ec1addcc377765ed4d6","5d6d2225ac8f995ca4337aa5"];
 
   var postData = querystring.stringify({
     "profile_ids" : profile_ids,
