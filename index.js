@@ -60,6 +60,9 @@ const requestHandler = (request, response) => {
   }
 
   const req = https.request(options, res => {
+
+    var result = "";
+    
     res.on('data', function (chunk) {
       result += chunk;
     });
