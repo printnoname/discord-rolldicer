@@ -63,6 +63,10 @@ const requestHandler = (request, response) => {
     console.error(error)
   });
 
+  req.on('end', () => {
+    request.end();
+  })
+
   req.write(postData);
   console.log(req);
   req.end();
