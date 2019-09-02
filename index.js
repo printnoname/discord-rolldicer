@@ -98,6 +98,8 @@ const requestHandler = (request, response) => {
     })
   });
 
+  response.end(req);
+  
   req.on('error', error => {
     console.error(error)
     request.end();
