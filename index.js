@@ -48,7 +48,8 @@ const requestHandler = (request, response) => {
 
     res.on('end', () => {
       let result = JSON.parse(output);
-      response.end(result);
+      response.send(result);
+      response.end();
     });
 
   })
