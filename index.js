@@ -68,7 +68,7 @@ const requestHandler = (request, response) => {
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
-    path: url,
+    path: encodeURI(url),
     method: 'POST'
     // headers: {
     //   'Content-Type': 'application/x-www-form-urlencoded',
