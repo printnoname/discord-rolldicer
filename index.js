@@ -31,23 +31,29 @@ const port = process.env.PORT || 5000
 
 const requestHandler = (request, response) => {
 
-  https.get(encodeURI('https://api.bufferapp.com/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN), (resp) => {
-  let data = '';
 
-  // A chunk of data has been recieved.
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
+  const options = {
+    hostname: 'api.bufferapp.com',
+    port: 443,
+    path: encodeURI('/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN),
+    method: 'GET'
+  }
 
-  // The whole response has been received. Print out the result.
-  resp.on('end', () => {
-    console.log(JSON.parse(data).explanation);
-  });
 
-}).on("error", (err) => {
-  console.log("Error: " + err.message);
-});
-
+  const req = https.request(options, res => {
+    console.log(`statusCode: ${res.statusCode}`)
+  
+    res.on('data', d => {
+      process.stdout.write(d)
+    })
+  })
+  
+  req.on('error', error => {
+    console.error(error)
+  })
+  
+  req.end();
+  
 }
 
 const server = http.createServer(requestHandler)
