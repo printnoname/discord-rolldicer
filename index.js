@@ -46,7 +46,7 @@ const requestHandler = (request, response) => {
     "profile_ids" : profile_ids,
     "now": true,
     "media" : media,
-    "text": "posting stuff"
+    "text": "posting stuff 2"
   });
 
   const options = {
@@ -67,10 +67,13 @@ const requestHandler = (request, response) => {
     res.on('data', function (chunk) {
       result += chunk;
     });
+
     res.on('end', function () {
+      request.end();
       console.log(result);
     });
     res.on('error', function (err) {
+      request.end();
       console.log(err);
     })
   }) 
