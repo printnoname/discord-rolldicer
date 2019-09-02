@@ -35,9 +35,9 @@ const requestHandler = (request, response) => {
   var media = [];
   media["title"] = "My first tweet";
   media["description"] = "What about this one";
-  media["photo"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480";
-  media["picture"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480";
-  media["link"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480"
+  media["photo"] = encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+  media["picture"] = encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+  media["link"] = encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
   var profile_ids = [];
   profile_ids = ["5d6cdaa147c4bf29766fe730","5d6d1ec1addcc377765ed4d6","5d6d2225ac8f995ca4337aa5"];
 
