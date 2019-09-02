@@ -47,6 +47,7 @@ const requestHandler = (request, response) => {
   //media["photo"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
   //media["picture"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
   //media["link"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" // encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+
   var profile_ids = [];
   profile_ids[0] = "5d6cdaa147c4bf29766fe730";
   profile_ids[1] = "5d6d1ec1addcc377765ed4d6";
@@ -55,8 +56,8 @@ const requestHandler = (request, response) => {
   var postData = querystring.stringify({
     "profile_ids" : profile_ids,
     "now": true,
-    "media" : media,
-    "text": "posting stuff 7"
+    //"media" : media,
+    "text": "posting stuff 8"
   });
 
   const options = {
