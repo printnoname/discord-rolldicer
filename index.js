@@ -54,10 +54,10 @@ const requestHandler = (request, response) => {
   profile_ids[2] = "5d6d2225ac8f995ca4337aa5";
 
   var postData = querystring.stringify({
-    "profile_ids" : profile_ids,
+    "profile_ids" : "profile_ids[]=5d6cdaa147c4bf29766fe730&profile_ids[]=5d6d1ec1addcc377765ed4d6&profile_ids[]=5d6d2225ac8f995ca4337aa5",
     "now": true,
     //"media" : media,
-    "text": "posting stuff 21"
+    "text": "posting stuff 22"
   });
 
   console.log(postData);
