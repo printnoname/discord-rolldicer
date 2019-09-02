@@ -47,23 +47,26 @@ const requestHandler = (request, response) => {
   //media["photo"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
   //media["picture"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
   //media["link"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" // encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
-
   var profile_ids = [];
-  profile_ids[0] = "5d6d1ec1addcc377765ed4d6";
-  profile_ids[1] = "5d6d1ec1addcc377765ed4d6";
-  profile_ids[2] = "5d6d1ec1addcc377765ed4d6";
+  profile_ids = ["5d6cdaa147c4bf29766fe730","5d6d1ec1addcc377765ed4d6","5d6d2225ac8f995ca4337aa5"];
 
   var postData = querystring.stringify({
     "profile_ids" : profile_ids,
     "now": true,
-    //"media" : media,
-    "text": "posting stuff 9"
+    "media" : media,
+    "text": "posting stuff 10"
   });
+
+  var url = '/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN;
+
+  for(var i = 0;i < profile_ids.length;i++) {
+    url+='&' + profile_ids[i];
+  }
 
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
-    path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
+    path: url,
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
