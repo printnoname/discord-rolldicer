@@ -48,7 +48,7 @@ const requestHandler = (request, response) => {
 
     res.on('end', () => {
       let result = JSON.parse(output);
-      req.end(result);
+      response.end(result);
     });
 
   })
@@ -57,7 +57,7 @@ const requestHandler = (request, response) => {
     console.error(error)
   })
   
- // req.end();
+   req.end();
 }
 
 const server = http.createServer(requestHandler)
