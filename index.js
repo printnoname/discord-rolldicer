@@ -35,7 +35,7 @@ const requestHandler = (request, response) => {
 
   var id = "5d6cdaa147c4bf29766fe730"
 
-  var postData = JSON.stringify({
+  var postData = querystring.stringify({
     "profile_ids" : [id],
     "now": true,
     "media" : {"title":"test",'description':"test_description"}
@@ -47,30 +47,29 @@ const requestHandler = (request, response) => {
     path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': postData.length
     }
   }
 
   const req = https.request(options, res => {
-    console.log(`statusCode: ${res.statusCode}`)
-    //console.log('headers:', res.headers);
-    
-  })
-
-  
+    res.on('data', function (chunk) {
+      result += chunk;
+    });
+    res.on('end', function () {
+      console.log(result);
+    });
+    res.on('error', function (err) {
+      console.log(err);
+    })
+  }) 
 
   req.on('error', error => {
     console.error(error)
     request.end();
   });
 
-  req.on('end', () => {
-    request.end();
-  })
-
   req.write(postData);
-  console.log(req);
   req.end();
 }
 
