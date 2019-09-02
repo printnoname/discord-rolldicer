@@ -31,7 +31,6 @@ const port = process.env.PORT || 5000
 
 const requestHandler = (request, response) => {
 
-
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
@@ -39,13 +38,19 @@ const requestHandler = (request, response) => {
     method: 'GET'
   }
 
-
   const req = https.request(options, res => {
     console.log(`statusCode: ${res.statusCode}`)
   
-    res.on('data', d => {
-      process.stdout.write(d)
-    })
+
+    res.on('data', (chunk) => {
+      output += chunk;
+    });
+
+    res.on('end', () => {
+      let result = JSON.parse(output);
+      res.send(result);
+    });
+
   })
   
   req.on('error', error => {
@@ -53,7 +58,6 @@ const requestHandler = (request, response) => {
   })
   
   req.end();
-  
 }
 
 const server = http.createServer(requestHandler)
