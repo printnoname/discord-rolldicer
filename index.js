@@ -1,25 +1,43 @@
-const Discord = require('discord.js');
-const random = require('random');
+// const Discord = require('discord.js');
+// const random = require('random');
 
-let bot = new Discord.Client();
+// let bot = new Discord.Client();
 
-const token = process.env.BOT_TOKEN;
+// const token = process.env.BOT_TOKEN;
 
-bot.on('ready', () => {
-  console.log("Alright, alright, alright")
-});
+// bot.on('ready', () => {
+//   console.log("Alright, alright, alright")
+// });
 
-bot.on('message', msg => {
-  if (msg.content === 'dices, dude') {
+// bot.on('message', msg => {
+//   if (msg.content === 'dices, dude') {
 
-      let numbers = "";
+//       let numbers = "";
 
-      for (let i = 0; i < 8; i++) {
-        numbers += random.int(0,9);
-      }
+//       for (let i = 0; i < 8; i++) {
+//         numbers += random.int(0,9);
+//       }
 
-      msg.reply(numbers);
+//       msg.reply(numbers);
+//   }
+// });
+
+// bot.login(token);
+
+const http = require('http')
+const port = 3000
+
+const requestHandler = (request, response) => {
+  console.log(request.url)
+  response.end('Hello Node.js Server!')
+}
+
+const server = http.createServer(requestHandler)
+
+server.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
   }
-});
 
-bot.login(token);
+  console.log(`server is listening on ${port}`)
+})
