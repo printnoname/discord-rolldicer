@@ -63,6 +63,8 @@ const requestHandler = (request, response) => {
     url+='&' + profile_ids[i];
   }
 
+  console.log(url);
+  
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
