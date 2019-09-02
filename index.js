@@ -55,9 +55,10 @@ const requestHandler = (request, response) => {
   const req = https.request(options, res => {
     //console.log(`statusCode: ${res.statusCode}`)
     //console.log('headers:', res.headers);
-    console.log('headers:', req.headers);
   })
 
+  console.log(req);
+  
   req.on('error', error => {
     console.error(error)
   });
