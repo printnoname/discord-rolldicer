@@ -60,6 +60,8 @@ const requestHandler = (request, response) => {
     "text": "posting stuff 20"
   });
 
+  console.log(postData);
+  
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
