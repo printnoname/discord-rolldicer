@@ -36,16 +36,17 @@ const requestHandler = (request, response) => {
   var id = "5d6cdaa147c4bf29766fe730"
 
   var media = [];
-  media["title"] = "test";
-  media["description"] = "test_description";
-
+  media["title"] = "My first tweet";
+  media["description"] = "What about this one";
+  media["photo"] = "https://media.gettyimages.com/photos/spring-field-picture-id539016480?s=2048x2048";
   var profile_ids = [];
   profile_ids[0] = id;
 
   var postData = querystring.stringify({
     "profile_ids" : profile_ids,
     "now": true,
-    "media" : media
+    "media" : media,
+    "text": "posting stuff"
   });
 
   const options = {
@@ -62,7 +63,7 @@ const requestHandler = (request, response) => {
   const req = https.request(options, res => {
 
     var result = "";
-    
+
     res.on('data', function (chunk) {
       result += chunk;
     });
