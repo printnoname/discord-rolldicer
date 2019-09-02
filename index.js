@@ -33,11 +33,20 @@ const querystring = require('querystring');
 const requestHandler = (request, response) => {
 
   var media = [];
-  media["title"] = "My first tweet";
-  media["description"] = "What about this one";
-  media["photo"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
-  media["picture"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
-  media["link"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" // encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+
+  media = {
+  "title":"My first tweet",
+  "description":"What about this one",
+  "photo":"http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&",
+  "picture":"http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&",
+  "link":"http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&"
+  }
+
+  //media["title"] = "My first tweet";
+  //media["description"] = "What about this one";
+  //media["photo"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+  //media["picture"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" //encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+  //media["link"] = "http%3A%2F%2Fgoogle.com%2Fimages%2Flogo.png&" // encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
   var profile_ids = [];
   profile_ids = ["5d6cdaa147c4bf29766fe730","5d6d1ec1addcc377765ed4d6","5d6d2225ac8f995ca4337aa5"];
 
@@ -45,7 +54,7 @@ const requestHandler = (request, response) => {
     "profile_ids" : profile_ids,
     "now": true,
     "media" : media,
-    "text": "posting stuff 5"
+    "text": "posting stuff 6"
   });
 
   const options = {
