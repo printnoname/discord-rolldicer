@@ -54,7 +54,7 @@ const requestHandler = (request, response) => {
     "profile_ids" : profile_ids,
     "now": true,
     "media" : media,
-    "text": "posting stuff 10"
+    "text": "posting stuff 12"
   });
 
   var url = '/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN;
@@ -67,11 +67,11 @@ const requestHandler = (request, response) => {
     hostname: 'api.bufferapp.com',
     port: 443,
     path: url,
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': postData.length
-    }
+    method: 'POST'
+    // headers: {
+    //   'Content-Type': 'application/x-www-form-urlencoded',
+    //   'Content-Length': postData.length
+    // }
   }
 
 
@@ -106,7 +106,7 @@ const requestHandler = (request, response) => {
     request.end();
   });
 
-  req.write(postData);
+  //req.write(postData);
   req.end();
 }
 
