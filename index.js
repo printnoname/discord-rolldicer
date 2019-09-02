@@ -98,7 +98,8 @@ const requestHandler = (request, response) => {
     })
   });
 
-  console.log(req);
+  console.log(req.body);
+  console.log(req.getHeaders());
 
   req.on('error', error => {
     console.error(error)
