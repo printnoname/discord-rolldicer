@@ -57,7 +57,6 @@ const requestHandler = (request, response) => {
     console.log('headers:', res.headers);
   })
   
-  req.on('done')
   req.on('error', error => {
     console.error(error)
   });
