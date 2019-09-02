@@ -80,11 +80,11 @@ const requestHandler = (request, response) => {
 
     res.on('end', function () {
       console.log(result);
-      request.end();
+      request.end(result);
     });
     res.on('error', function (err) {
-      request.end();
       console.log(err);
+      request.end();
     })
   }) 
 
