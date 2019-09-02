@@ -35,7 +35,7 @@ const requestHandler = (request, response) => {
 
   var id = "5d6cdaa147c4bf29766fe730"
 
-  var postData = querystring.JSON.stringify({
+  var postData = JSON.stringify({
     "profile_ids" : [id],
     "now": true,
     "media" : {"title":"test",'description':"test_description"}
