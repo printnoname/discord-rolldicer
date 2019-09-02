@@ -60,11 +60,11 @@ const requestHandler = (request, response) => {
   var url = '/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN;
 
   for(var i = 0;i < profile_ids.length;i++) {
-    url+='&' + profile_ids[i];
+    url+='&profile_ids[]=' + profile_ids[i];
   }
 
   console.log(url);
-  
+
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
