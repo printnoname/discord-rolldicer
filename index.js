@@ -25,12 +25,13 @@
 // bot.login(token);
 
 const http = require('http')
+const https = require('https')
 const port = process.env.PORT || 5000
 
 
 const requestHandler = (request, response) => {
 
-  https.get('https://api.bufferapp.com/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN, (resp) => {
+  http.get('https://api.bufferapp.com/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN, (resp) => {
   let data = '';
 
   // A chunk of data has been recieved.
