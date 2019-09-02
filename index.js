@@ -45,7 +45,7 @@ const requestHandler = (request, response) => {
     "profile_ids" : profile_ids,
     "now": true,
     "media" : media,
-    "text": "posting stuff 4"
+    "text": "posting stuff 5"
   });
 
   const options = {
