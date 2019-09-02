@@ -35,7 +35,7 @@ const requestHandler = (request, response) => {
 
   var id = "5d6cdaa147c4bf29766fe730"
 
-  var postData = querystring.stringify({
+  var postData = querystring.JSON.stringify({
     "profile_ids" : [id],
     "now": true,
     "media" : {"title":"test",'description':"test_description"}
@@ -47,13 +47,13 @@ const requestHandler = (request, response) => {
     path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
       'Content-Length': postData.length
     }
   }
 
   const req = https.request(options, res => {
-    //console.log(`statusCode: ${res.statusCode}`)
+    console.log(`statusCode: ${res.statusCode}`)
     //console.log('headers:', res.headers);
   })
 
@@ -64,8 +64,8 @@ const requestHandler = (request, response) => {
   });
 
   req.write(postData);
-   console.log(req);
-   req.end();
+  console.log(req);
+  req.end();
 }
 
 const server = http.createServer(requestHandler)
