@@ -60,20 +60,20 @@ const requestHandler = (request, response) => {
   //   "text": "posting stuff 22"
   // });
 
-  var postData = "profile_ids[]=5d6cdaa147c4bf29766fe730&profile_ids[]=5d6d1ec1addcc377765ed4d6&profile_ids[]=5d6d2225ac8f995ca4337aa5&text=hmmmmmm&now=true";
-  postData+="&text=" + encodeURI("text main");
-  postData+="&media[text]=" + encodeURI("media text");
-  postData+="&media[photo]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
-  postData+="&media[picture]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480"); 
-  postData+="&media[link]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
-  postData+="&media[description]=" + encodeURI("media description");
+ var postData = "profile_ids[]=5d6cdaa147c4bf29766fe730&profile_ids[]=5d6d1ec1addcc377765ed4d6&profile_ids[]=5d6d2225ac8f995ca4337aa5&text=hmmmmmm&now=true";
+ postData+="&text=via @norimyxxxo " + encodeURI("text main 8 ") + encodeURI(" https://media.gettyimages.com/photos/spring-field-picture-id539016480") + encodeURI(" https://cdn.images.express.co.uk/img/dynamic/151/590x/Black-hole-picture-please-time-date-first-image-black-hole-event-horizon-telescope-1112295.webp?r=1554889792953");
+ postData+="&media[photo]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+ postData+="&media[photo]=" + encodeURI("https://images.pexels.com/photos/207962/pexels-photo-207962.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+ // postData+="&media[picture]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480"); 
+  //postData+="&media[link]=" + encodeURI("https://media.gettyimages.com/photos/spring-field-picture-id539016480");
+  //postData+="&media[description]=" + encodeURI("media description");
 
-  console.log(postData);
+  //console.log(postData);
 
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
-    path: encodeURI('/1/updates/create.json?access_token=' + process.env.BUFFER_TOKEN),
+    path: encodeURI('/1/updates/create.json?access_token=2/8bc203801e7bb6de4c5a5b9c576671ba5adce7364ec370ebd72b54e8ee0ed438ad28ad1ce51adf3cfdc47519b590d7853e73e0aeb763adf1e36aa5cff14f087f'),
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -85,7 +85,7 @@ const requestHandler = (request, response) => {
   // const options = {
   //   hostname: 'api.bufferapp.com',
   //   port: 443,
-  //   path: encodeURI('/1/profiles.json?access_token=' + process.env.BUFFER_TOKEN),
+  //   path: encodeURI('/1/profiles.json?access_token=2/8bc203801e7bb6de4c5a5b9c576671ba5adce7364ec370ebd72b54e8ee0ed438ad28ad1ce51adf3cfdc47519b590d7853e73e0aeb763adf1e36aa5cff14f087f'),
   //   method: 'GET'
   // }
 
