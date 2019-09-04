@@ -1,29 +1,3 @@
-// const Discord = require('discord.js');
-// const random = require('random');
-
-// let bot = new Discord.Client();
-
-// const token = process.env.BOT_TOKEN;
-
-// bot.on('ready', () => {
-//   console.log("Alright, alright, alright")
-// });
-
-// bot.on('message', msg => {
-//   if (msg.content === 'dices, dude') {
-
-//       let numbers = "";
-
-//       for (let i = 0; i < 8; i++) {
-//         numbers += random.int(0,9);
-//       }
-
-//       msg.reply(numbers);
-//   }
-// });
-
-// bot.login(token);
-
 const http = require('http')
 const https = require('https')
 const port = process.env.PORT || 5000
@@ -73,7 +47,7 @@ const requestHandler = (request, response) => {
   const options = {
     hostname: 'api.bufferapp.com',
     port: 443,
-    path: encodeURI('/1/updates/create.json?access_token=2/8bc203801e7bb6de4c5a5b9c576671ba5adce7364ec370ebd72b54e8ee0ed438ad28ad1ce51adf3cfdc47519b590d7853e73e0aeb763adf1e36aa5cff14f087f'),
+    path: encodeURI('/1/updates/create.json?access_token='),
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -116,7 +90,7 @@ const requestHandler = (request, response) => {
     request.end();
   });
 
-  req.write(postData);
+ // req.write(postData);
   req.end();
 }
 
