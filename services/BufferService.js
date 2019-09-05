@@ -25,6 +25,12 @@ function getActiveAcounts(profileAccounts)
     return acceptedAccounts;
 }
 
+
+//Mock
+function getApiToken(){
+    return JSON.parse(fs.readFileSync(path.join(__dirname,"../configs/token.json")))["token"];
+  }
+
 module.exports.getProfileDataPretty = function (jsonData)
 {
     var prettyfiedData = [];
@@ -39,28 +45,50 @@ module.exports.getProfileDataPretty = function (jsonData)
     return prettyfiedData;
 }
 
-function getActiveAccountsByType(accounts) {
+module.exports.prepareDataForTwitter = function (data) {
 
 }
 
-module.exports.postOnTwitter = function (data) {
+module.exports.prepareDataForFacebook = function (data) {
 
 }
 
-module.exports.postOnFacebook = function (data) {
+module.exports.prepareDataForInstagram = function (data) {
 
 }
 
-module.exports.postOnInstagram = function (data) {
+module.exports.prepareDataForOthers = function (data,account_id) {
 
-}
+    var preaparedData = {};
 
-module.exports.postOnPinterest = function (data) {
+    var token = getApiToken();
 
-}
+    var postData="profile_ids[]=" + account_id + "&now=true";
+    postData+="&text=" + encodeURI(data.text);
 
-module.exports.postOthers = function (data) {
+    switch(data.type){
+        case "image":
+            postData+="&media[photo]=" + encodeURI(data.image);
+            break;
+        case "video":
+            postData+=" \r\n" + encodeURI(data.video);
+            break;
+        case "plain":
+            break;
+    }
 
+    preaparedData.data = postData;
+
+    preparedData.requestOptions =  {
+        hostname: 'api.bufferapp.com',
+        port: 443,
+        path: encodeURI('/1/updates/create.json?access_token=' + token),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': postData.length
+        }
+    }
 }
 
 
