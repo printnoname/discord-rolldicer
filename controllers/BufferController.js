@@ -45,8 +45,8 @@ module.exports.getProfile = async function (req,res) {
 });
 }
 
-module.exports.sendData = async function (req,res) {
-
+module.exports.postData = async function (req,res) {
+    res.status(200).send(req.body);
 }
 
 

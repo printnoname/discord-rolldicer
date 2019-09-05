@@ -1,5 +1,3 @@
-
-
 const path = require("path");
 const express = require('express');
 
@@ -7,7 +5,6 @@ const  bufferController = require(path.join(__dirname,'../controllers/BufferCont
 
 const router = express.Router();
 
-//router.post('/send',bufferController.sendData());
+router.post('/postData',bufferController.postData);
 router.get('/profile',bufferController.getProfile);
-
 module.exports = router;

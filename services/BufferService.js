@@ -7,7 +7,12 @@ function getActiveAcounts(profileAccounts)
     var acceptedAccounts = [];
 
     if(profileAccounts != null && profileAccounts.length > 0)
-    var configFileAccounts = JSON.parse(fs.readFileSync(path.join(__dirname,'../configs/accounts.json')))["accounts"];
+
+    if(process.env.envType == "dev") {
+        var configFileAccounts = JSON.parse(fs.readFileSync(path.join(__dirname,'../configs/dev_accounts.json')))["accounts"];
+    } else {
+        var configFileAccounts = JSON.parse(fs.readFileSync(path.join(__dirname,'../configs/prod_accounts.json')))["accounts"];
+    }
 
     profileAccounts.forEach((element,key)=>{
         var id = element.id;
