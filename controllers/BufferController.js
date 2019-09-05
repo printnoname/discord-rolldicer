@@ -1,6 +1,7 @@
 const path = require('path');
 const https = require('https');
 const fs = require('fs');
+
 const bufferService = require(path.join(__dirname,'../services/BufferService.js'));
 
 function requestProfileInfo(callback){
@@ -45,50 +46,78 @@ module.exports.getProfile = async function (req,res) {
 });
 }
 
+
 module.exports.postData = async function (req,res) {
-    res.status(200).send(req.body);
+  var sampleData = [
+    {
+    text:"Really enjoyed #coolhashtag doing this fun commission piece for John Henson as a gift to his American friends #friend Patrick Griffin who was Honourary Grand Marshal for the St Patricks day Parade this year here in Athlone. He's painted here with his partner Frances M McNicholas & with the Lord Mayor of Athlone Frankie Keena..Love the photo of them back home in Providence, Rhode Island after recieving their painting from John",
+    type:"image",                               
+    tags:{        
+      facebook:"@placepoint.ireland",
+      twitter:"@PlacePointApp",
+      instagram:"@placepointapp"
+    },
+    image:"https://scontent.fala3-1.fna.fbcdn.net/v/t1.0-9/69466081_10157489558167433_8429176749249527808_n.jpg?_nc_cat=107&_nc_oc=AQnAIdIWKWLFDdmr9aIOpJ-SXuRvmYfcwJCpYK3ABKNAYdbE2FBG5kbDI0wUMGcOWqQ&_nc_ht=scontent.fala3-1.fna&oh=9725c22f56b6d50835f19107d57c303b&oe=5DFB238A",
+    video:null,
+    
+    facebook_image_title:"facebook image",
+    facebook_image_description:"facebook_descripton",
+    facebook_image_link:"facebooklink.com",
+
+  },
+  {
+    text:"Really enjoyed #coolhashtag doing this fun commission piece for John Henson as a gift to his American friends #friend Patrick Griffin who was Honourary Grand Marshal for the St Patricks day Parade this year here in Athlone. He's painted here with his partner Frances M McNicholas & with the Lord Mayor of Athlone Frankie Keena..Love the photo of them back home in Providence, Rhode Island after recieving their painting from John",
+    type:"video",                               
+    tags:{        
+      facebook:"@placepoint.ireland",
+      twitter:"@PlacePointApp",
+      instagram:"@placepointapp"
+    },
+    image:"video",
+    video:"https://www.youtube.com/watch?v=RYpRdsaNImc",
+    
+    facebook_image_title:"facebook image",
+    facebook_image_description:"facebook_descripton",
+    facebook_image_link:"facebooklink.com",
+  },
+  {
+    text:"Really enjoyed #coolhashtag doing this fun commission piece for John Henson as a gift to his American friends #friend Patrick Griffin who was Honourary Grand Marshal for the St Patricks day Parade this year here in Athlone. He's painted here with his partner Frances M McNicholas & with the Lord Mayor of Athlone Frankie Keena..Love the photo of them back home in Providence, Rhode Island after recieving their painting from John",
+    type:"plain",                               
+    tags:{        
+      facebook:"@placepoint.ireland",
+      twitter:"@PlacePointApp",
+      instagram:"@placepointapp"
+    },
+    image:null,
+    video:null,
+    
+    facebook_image_title:"facebook image",
+    facebook_image_description:"facebook_descripton",
+    facebook_image_link:"facebooklink.com",
+  }
+];
+
+sampleData.forEach((element,key)=>{
+  requestProfileInfo((err,data)=>{
+    var accounts = bufferService.getActiveAcounts(data);
+
+    accounts.forEach((account)=>{
+      switch(account.service){
+        case "twitter":
+          var twitterData = bufferService.prepareDataForTwitter(data);
+          break;
+        case "instagram":
+            var instagramData = bufferService.prepareDataForInstagram(data);
+          break;
+        case "facebook":
+            var facebookData = bufferService.prepareDataForFacebook(data);
+          break;
+        default:
+          var preparedData = bufferService.prepareDataForOthers(data);
+          break;
+      }
+    });
+  });
+});
+
 }
-
-
-    // let rate = req.body.rate;
-    // Tape.model.find({_id:req.params.id},function (err,result) {
-    //     if(err) res.status(500).send(err);
-    //     else {
-    //         if(result.length<=0) res.status(404).send("Tape not found");
-    //         else {
-    //             let _tape = result[0];
-
-    //             if(module.exports.alreadyRated(_tape.ratings,req.jwt.id)){
-    //                 res.status(403).send("Already rated");
-    //             } else {
-    //                 _tape.update(
-    //                     {$push:{ratings: {rate:rate,byUser:req.jwt.id}}},
-    //                     function (err,updateResult) {
-    //                         if(err) res.status(500).send(err);
-    //                         else res.status(200).send(_tape);
-    //                     }
-    //                 );
-    //             }
-    //         }
-    //     }
-    // });
-
-
-// module.exports.sendData = async function (req,res) {
-//     Tape.model.find({id:req.params.id},function (err,result) {
-//         if(err) res.status(500).send(err);
-//         else {
-//             if(result.length<=0) res.status(404).send("Tape not found");
-//             else {
-//                 let _tape = result[0];
-
-//                 _tape.update({highlighted:true},
-//                         function (err,updateResult) {
-//                             if(err) res.status(500).send(err);
-//                             else res.status(200).send(_tape);
-//                         }
-//                     );
-//                 }
-//             }
-//     });
-//}
