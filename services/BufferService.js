@@ -34,7 +34,7 @@ function getActiveAcounts(profileAccounts)
 //Mock
 function getApiToken(){
     return JSON.parse(fs.readFileSync(path.join(__dirname,"../configs/token.json")))["token"];
-  }
+}
 
 module.exports.getProfileDataPretty = function (jsonData)
 {
@@ -50,16 +50,121 @@ module.exports.getProfileDataPretty = function (jsonData)
     return prettyfiedData;
 }
 
-module.exports.prepareDataForTwitter = function (data) {
+module.exports.prepareDataForTwitter = function (data,account_id) {
+    var preaparedData = {};
 
+    var token = getApiToken();
+
+    var postData="profile_ids[]=" + account_id + "&now=true";
+    postData+="&text=" + encodeURI(data.text);
+
+    if(data.tags.twitter) {
+        postData+="\r\n"+ encodeURI("Shared on behalf of " + data.tags.twitter)
+    }
+
+    switch(data.type){
+        case "image":
+            postData+="&media[photo]=" + encodeURI(data.image);
+            break;
+        case "video":
+            postData+=" \r\n" + encodeURI(data.video);
+            break;
+        case "plain":
+            break;
+    }
+
+    preaparedData.data = postData;
+
+    preparedData.requestOptions =  {
+        hostname: 'api.bufferapp.com',
+        port: 443,
+        path: encodeURI('/1/updates/create.json?access_token=' + token),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': postData.length
+        }
+    }
 }
 
-module.exports.prepareDataForFacebook = function (data) {
+module.exports.prepareDataForFacebook = function (data,account_id) {
+    var preaparedData = {};
 
+    var token = getApiToken();
+
+    var postData="profile_ids[]=" + account_id + "&now=true";
+    postData+="&text=" + encodeURI(data.text);
+
+    if(data.tags.facebook) {
+        postData+="\r\n"+ encodeURI("Shared on behalf of " + data.tags.facebook)
+    }
+
+    switch(data.type){
+        case "image":
+            postData+="&media[photo]=" + encodeURI(data.image);
+ //           postData+="&media[photo]=" + encodeURI(data.image);
+//            postData+="&media[photo]=" + encodeURI(data.image);
+ //           postData+="&media[photo]=" + encodeURI(data.image);
+            break;
+        case "video":
+            postData+=" \r\n" + encodeURI(data.video);
+            break;
+        case "plain":
+            break;
+    }
+
+    preaparedData.data = postData;
+
+    preparedData.requestOptions =  {
+        hostname: 'api.bufferapp.com',
+        port: 443,
+        path: encodeURI('/1/updates/create.json?access_token=' + token),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': postData.length
+        }
+    }
 }
 
-module.exports.prepareDataForInstagram = function (data) {
+module.exports.prepareDataForInstagram = function (data,account_id) {
+    var preaparedData = {};
 
+    var token = getApiToken();
+
+    var postData="profile_ids[]=" + account_id + "&now=true";
+    postData+="&text=" + encodeURI(data.text);
+
+    if(data.tags.instagram) {
+        postData+="\r\n"+ encodeURI("Shared on behalf of " + data.tags.instagram)
+    }
+
+    switch(data.type){
+        case "image":
+            postData+="&media[photo]=" + encodeURI(data.image);
+ //           postData+="&media[photo]=" + encodeURI(data.image);
+//            postData+="&media[photo]=" + encodeURI(data.image);
+ //           postData+="&media[photo]=" + encodeURI(data.image);
+            break;
+        case "video":
+            postData+=" \r\n" + encodeURI(data.video);
+            break;
+        case "plain":
+            break;
+    }
+
+    preaparedData.data = postData;
+
+    preparedData.requestOptions =  {
+        hostname: 'api.bufferapp.com',
+        port: 443,
+        path: encodeURI('/1/updates/create.json?access_token=' + token),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': postData.length
+        }
+    }
 }
 
 module.exports.prepareDataForOthers = function (data,account_id) {

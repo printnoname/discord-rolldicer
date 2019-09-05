@@ -46,6 +46,10 @@ module.exports.getProfile = async function (req,res) {
 });
 }
 
+async function sendDataToBuffer(dataObject){
+  
+}
+
 
 module.exports.postData = async function (req,res) {
   var sampleData = [
@@ -97,25 +101,34 @@ module.exports.postData = async function (req,res) {
   }
 ];
 
+var accounts = await bufferService.getActiveAcounts();
+
 sampleData.forEach((element,key)=>{
   requestProfileInfo((err,data)=>{
     var accounts = bufferService.getActiveAcounts(data);
 
     accounts.forEach((account)=>{
+
+      var preparedData = "";
+
       switch(account.service){
         case "twitter":
-          var twitterData = bufferService.prepareDataForTwitter(data);
+          preparedData = bufferService.prepareDataForTwitter(data);
           break;
         case "instagram":
-            var instagramData = bufferService.prepareDataForInstagram(data);
+           preparedData = bufferService.prepareDataForInstagram(data);
           break;
         case "facebook":
-            var facebookData = bufferService.prepareDataForFacebook(data);
+           preparedData = bufferService.prepareDataForFacebook(data);
           break;
         default:
-          var preparedData = bufferService.prepareDataForOthers(data);
+           preparedData = bufferService.prepareDataForOthers(data);
           break;
       }
+
+      var result = await sendDataToBuffer(preparedData);
+      
+
     });
   });
 });
