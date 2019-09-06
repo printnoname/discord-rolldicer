@@ -52,6 +52,9 @@ async function sendDataToBuffer(dataObject){
 
 
 module.exports.postData = async function (req,res) {
+
+  console.log(req.body);
+
   var sampleData = [
     {
     text:"Really enjoyed #coolhashtag doing this fun commission piece for John Henson as a gift to his American friends #friend Patrick Griffin who was Honourary Grand Marshal for the St Patricks day Parade this year here in Athlone. He's painted here with his partner Frances M McNicholas & with the Lord Mayor of Athlone Frankie Keena..Love the photo of them back home in Providence, Rhode Island after recieving their painting from John",
@@ -126,7 +129,7 @@ sampleData.forEach((element,key)=>{
           break;
       }
 
-      var result = await sendDataToBuffer(preparedData);
+      //var result = await sendDataToBuffer(preparedData);
       
 
     });

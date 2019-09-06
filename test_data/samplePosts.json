@@ -1,11 +1,36 @@
 [
     {
-        "name":"name1"
+    "text":"Really enjoyed #coolhashtag doing this fun commission piece for John Henson as a gift to his American friends #friend Patrick Griffin who was Honourary Grand Marshal for the St Patricks day Parade this year here in Athlone. He's painted here with his partner Frances M McNicholas & with the Lord Mayor of Athlone Frankie Keena..Love the photo of them back home in Providence, Rhode Island after recieving their painting from John",
+    "type":"image",                               
+    "tags":{        
+      "facebook":"@placepoint.ireland",
+      "twitter":"@PlacePointApp",
+      "instagram":"@placepointapp"
     },
-    {
-        "name":"name2"
+    "image":"https://scontent.fala3-1.fna.fbcdn.net/v/t1.0-9/69466081_10157489558167433_8429176749249527808_n.jpg?_nc_cat=107&_nc_oc=AQnAIdIWKWLFDdmr9aIOpJ-SXuRvmYfcwJCpYK3ABKNAYdbE2FBG5kbDI0wUMGcOWqQ&_nc_ht=scontent.fala3-1.fna&oh=9725c22f56b6d50835f19107d57c303b&oe=5DFB238A",
+    "video":null
+  },
+  {
+    "text":"Really enjoyed #coolhashtag doing this fun commission piece for John Henson as a gift to his American friends #friend Patrick Griffin who was Honourary Grand Marshal for the St Patricks day Parade this year here in Athlone. He's painted here with his partner Frances M McNicholas & with the Lord Mayor of Athlone Frankie Keena..Love the photo of them back home in Providence, Rhode Island after recieving their painting from John",
+    "type":"video",                               
+    "tags":{        
+      "facebook":"@placepoint.ireland",
+      "twitter":"@PlacePointApp",
+      "instagram":"@placepointapp"
     },
-    {
-        "name":"name3"
-    }
+    "image":"video",
+    "video":"https://www.youtube.com/watch?v=RYpRdsaNImc"
+  },
+  {
+    "text":"Really enjoyed #coolhashtag doing this fun commission piece for John Henson as a gift to his American friends #friend Patrick Griffin who was Honourary Grand Marshal for the St Patricks day Parade this year here in Athlone. He's painted here with his partner Frances M McNicholas & with the Lord Mayor of Athlone Frankie Keena..Love the photo of them back home in Providence, Rhode Island after recieving their painting from John",
+    "type":"plain",                               
+    "tags":{        
+      "facebook":"@placepoint.ireland",
+      "twitter":"@PlacePointApp",
+      "instagram":"@placepointapp"
+    },
+    "image":null,
+    "video":null
+    
+  }
 ]
